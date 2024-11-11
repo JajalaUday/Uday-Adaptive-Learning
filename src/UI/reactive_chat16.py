@@ -17,7 +17,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 # Use a service account.
-cred = credentials.Certificate(r'C:\Users\91955\Downloads\adaptive-learning-rivier-firebase-adminsdk-6u1pl-d8fc406e6f.json')
+cred = credentials.Certificate("adaptive-learning-rivier-firebase-adminsdk-6u1pl-d8fc406e6f.json")
 
 app = firebase_admin.initialize_app(cred)
 
@@ -171,7 +171,7 @@ class ReactiveChat(param.Parameterized):
         self.dashboard_view.object = f"Total messages: {len(self.groupchat_manager.groupchat.get_messages())}"
 
     ########### tab3: Progress
-    def update_progress(self, contents, user):
+    def update_progress(self, contents, user, db=None):
         # Parse the agent's output for keywords                 
         if user == "LevelAdapterAgent":            
             pattern = re.compile(r'\b(correct|correctly|verified|yes|well done|excellent|successfully|that\'s right|good job|excellent|right|good|affirmative)\b', re.IGNORECASE)            
@@ -182,6 +182,11 @@ class ReactiveChat(param.Parameterized):
                     self.progress += 1
                     self.progress_bar.value = self.progress
                     self.progress_info.object = f"**{self.progress} out of {self.max_questions}**"
+
+                    #TODO
+                    # Update Firebase if answer is correct
+                    # db.update(user, increment)
+                    # call update tab
 
             else:
                 print("################ WRONG ANSWER #################")

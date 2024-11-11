@@ -13,7 +13,7 @@ from src import globals as globals
 from src.UI.avatar import avatar
 
 # Initialize Firebase
-cred = credentials.Certificate("ServiceAccountKey.json")
+cred = credentials.Certificate("adaptive-learning-rivier-firebase-adminsdk-6u1pl-d8fc406e6f.json")
 firebase_admin.initialize_app(cred)
 
 # Firestore database reference
