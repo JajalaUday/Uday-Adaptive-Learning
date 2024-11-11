@@ -12,7 +12,7 @@ from src import globals as globals
 from src.UI.avatar import avatar
 
 # Initialize Firestore using the credentials
-cred = credentials.Certificate(r'C:\Users\kutha\Downloads\adaptive-learning-rivier-firebase-adminsdk-6u1pl-d8fc406e6f.json')
+cred = credentials.Certificate(r'adaptive-learning-rivier-firebase-adminsdk-6u1pl-d8fc406e6f.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
